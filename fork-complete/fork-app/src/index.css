@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+
+.display-font { font-family: 'Space Grotesk', sans-serif; }
+.mono-font { font-family: 'IBM Plex Mono', monospace; }
+
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+.animate-spin { animation: spin 1s linear infinite; }
+
+@keyframes badgeFlip {
+  0% { opacity: 0; transform: rotateY(90deg) scale(0.9); }
+  60% { opacity: 1; transform: rotateY(-8deg) scale(1.02); }
+  100% { opacity: 1; transform: rotateY(0deg) scale(1); }
+}
+.badge-reveal { animation: badgeFlip 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@media (prefers-reduced-motion: reduce) { .badge-reveal { animation: none; } }
+
+input::placeholder, textarea::placeholder { color: #5C6270; }
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238A8F9C' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}

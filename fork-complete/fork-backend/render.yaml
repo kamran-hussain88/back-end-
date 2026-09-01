@@ -1,0 +1,23 @@
+databases:
+  - name: fork-db
+    plan: free
+    databaseName: fork
+    user: fork
+
+services:
+  - type: web
+    name: fork-backend
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.3
+      - key: DATABASE_URL
+        fromDatabase:
+          name: fork-db
+          property: connectionString
+      - key: JWT_SECRET_KEY
+        generateValue: true
